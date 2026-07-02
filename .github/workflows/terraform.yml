@@ -14,7 +14,9 @@ jobs:
   terraform-plan: #this is the name of the jon
     name: Terraform Plan
     runs-on: ubuntu-latest #this is the runner where the job will run
-    
+    defaults:
+     run:
+        working-directory: ${{ env.TF_WORKING_DIR }} #this is the path of the terraform directory
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -40,7 +42,7 @@ jobs:
 
       - name: show plan
         run: terraform show tfplan
-        
+
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
