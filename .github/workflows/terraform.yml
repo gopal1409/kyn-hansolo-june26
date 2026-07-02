@@ -29,15 +29,18 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
    
-
+      - name: Terraform init
+        run: terraform init
+        
       - name: Terraform validate
-        
         run: terraform validate
-
-      - name: Terraform Plan
         
+      - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+      - name: show plan
+        run: terraform show tfplan
+        
       - name: Upload Plan Artifact
         uses: actions/upload-artifact@v4
         with:
