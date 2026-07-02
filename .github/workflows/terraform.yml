@@ -19,7 +19,7 @@ jobs:
         working-directory: ${{ env.TF_WORKING_DIR }} #this is the path of the terraform directory
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Terraform #inside the runner we need to download terraform 
         uses: hashicorp/setup-terraform@v4
@@ -33,7 +33,15 @@ jobs:
    
       - name: Terraform init
         run: terraform init
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+      - name: TFLint
+        run: tflint --init 
         
+      - name: TFLint
+        run: tflint --recursive
+
       - name: Terraform validate
         run: terraform validate
         
