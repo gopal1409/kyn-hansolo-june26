@@ -129,10 +129,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: terraform init
         run: terraform init
-      - name: Download Plan Artifact
-        uses: actions/download-artifact@v4  
-        with:
-          name: terraform-plan
-          path: terraform
+
       - name: Terraform Destroy
         run: terraform destroy -auto-approve tfplan
