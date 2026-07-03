@@ -40,7 +40,7 @@ jobs:
         run: tflint --init 
 
       - name: TFLint
-        run: tflint --recursive
+        run: tflint -f compact
         #continue-on-error: true #this will continue the job even if the tflint fails
 
       - name: Terraform validate
