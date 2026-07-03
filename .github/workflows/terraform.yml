@@ -109,7 +109,7 @@ jobs:
     name: Terraform destroy
     if:  github.event.inputs.action == 'destroy'  #this will run only if the action is destroy
     runs-on: ubuntu-latest
-    needs: terraform-plan #this will run after the plan job is completed
+   
     environment:
       name: production
 
