@@ -28,7 +28,7 @@ variable "vm_size" {
   default = {
     dev  = "Standard_B1s"
     test = "Standard_F2"
-    prod = "Standard_D2s_v3"
+    prod = "Standard_D"
   }
 }
 
@@ -41,6 +41,7 @@ variable "suzuki" {
 
   }
 }
+
 variable "suzuki2" {
   description = "Map of virtual machine instances to create."
   type        = map(string)
@@ -50,4 +51,3 @@ variable "suzuki2" {
 
   }
 }
-
